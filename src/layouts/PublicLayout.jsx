@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
     return (
       <div className="main-container min-h-screen text-[#2C1810] flex justify-between flex-col">
         <Nav />
-        <main className="">
+        <main className="grid place-content-center">
           <Outlet />
         </main>
         <footer className="text-center">
