@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 export default function OurStory() {
   return (
-    <div className='container-px py-28 text-center max-w-[75em]'>
-      <h1 className='container-px text-12xl md:text-8xl text-6xl pb-8 font-Playfair'>
+    <div className='container-px py-2 text-center max-w-[75em]'>
+      <h1 className='container-px lg:text-6xl md:text-4xl text-3xl  pb-8 font-Playfair'>
         Our story
       </h1>
 

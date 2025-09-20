@@ -10,7 +10,7 @@ import { Outlet } from "react-router-dom";
           <Sidebar variant="side" />
           <div className="flex-1 flex flex-col min-h-screen">
             <AppNav />
-            <main className="flex-1 container-px py-6">
+            <main className="flex-1 container-px p-6 w-[calc(100%-16em)] self-end" >
               <Outlet />
             </main>
           </div>

@@ -24,8 +24,8 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <div className='container-px py-28'>
-      <h1 className='container-px text-12xl md:text-8xl text-6xl pb-8 font-Playfair'>
+    <div className='container-px py-2'>
+      <h1 className='container-px lg:text-6xl md:text-4xl text-3xl  pb-8 font-Playfair'>
         How Runneth <br /> Over works
       </h1>
       {/* <div className="flex items-center justify-between">

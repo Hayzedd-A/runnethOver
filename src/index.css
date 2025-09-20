@@ -98,6 +98,9 @@ body,
 #root {
   height: 100%;
 }
+button {
+  cursor: pointer;
+}
 
 html {
   font-family: var(--font-sans);

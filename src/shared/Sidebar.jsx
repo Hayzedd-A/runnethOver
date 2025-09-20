@@ -9,15 +9,15 @@ const links = [
 export default function Sidebar({ variant = 'side' }) {
   if (variant === 'bottom') {
     return (
-      <nav className='fixed bottom-0 inset-x-0 border-t bg-white h-14'>
+      <nav className='fixed bottom-0 inset-x-0  bg-white h-14'>
         <ul className='h-full grid grid-cols-3'>
           {links.map((l) => (
             <li key={l.to} className='h-full'>
               <NavLink
                 to={l.to}
                 className={({ isActive }) =>
-                  `h-full w-full flex flex-col items-center justify-center text-xs ${
-                    isActive ? 'text-brand-700' : 'text-gray-600'
+                  `h-full w-full uppercase flex flex-col items-center justify-center text-xs ${
+                    isActive ? 'text-accent-500' : 'text-black'
                   }`
                 }
               >
@@ -32,7 +32,7 @@ export default function Sidebar({ variant = 'side' }) {
   }
 
   return (
-    <aside className='w-64 bg-white hidden md:flex md:flex-col'>
+    <aside className='w-64 bg-white hidden md:flex md:flex-col fixed h-full'>
       <div className='h-16 flex items-center px-4 gap-2'>
         <img
           src='/logo_name.png'

@@ -65,12 +65,12 @@ export async function uploadImageAndGetProducts(file) {
   await delay(900);
   // Return mock products
   const base = [
-    { id: 'p1', name: 'Classic Sneakers', brand: 'SneakCo', price: 69.99 },
-    { id: 'p2', name: 'Canvas Tote Bag', brand: 'CarryAll', price: 24.5 },
-    { id: 'p3', name: 'Denim Jacket', brand: 'BlueWear', price: 89.0 },
-    { id: 'p4', name: 'Analog Watch', brand: 'Timely', price: 129.99 },
-    { id: 'p5', name: 'Wireless Earbuds', brand: 'Soundly', price: 59.0 },
-    { id: 'p6', name: 'Baseball Cap', brand: 'Capster', price: 19.99 },
+    { id: 'p1', name: 'Classic Sneakers', brand: 'SneakCo', price: 69.99, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
+    { id: 'p2', name: 'Canvas Tote Bag', brand: 'CarryAll', price: 24.5, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
+    { id: 'p3', name: 'Denim Jacket', brand: 'BlueWear', price: 89.0, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
+    { id: 'p4', name: 'Analog Watch', brand: 'Timely', price: 129.99, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
+    { id: 'p5', name: 'Wireless Earbuds', brand: 'Soundly', price: 59.0, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
+    { id: 'p6', name: 'Baseball Cap', brand: 'Capster', price: 19.99, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
   ];
   return base.map((p) => ({ ...p, image: '', matched: Math.random() > 0.5 }));
 }
