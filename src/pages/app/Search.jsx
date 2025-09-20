@@ -35,7 +35,7 @@ import { useState } from "react";
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Search</h1>
+          <h1 className="text-2xl font-bold">Upload your Image</h1>
           <div className="flex items-center gap-2">
             <button
               onClick={onCancel}
@@ -59,7 +59,7 @@ import { useState } from "react";
           {error && <div className="text-sm text-red-600 mt-2">{error}</div>}
         </div>
 
-        <div>
+        {/* <div>
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Results</h2>
           </div>
@@ -71,7 +71,7 @@ import { useState } from "react";
           {!loading && products.length === 0 && (
             <div className="text-sm text-gray-500">No results yet. Try uploading an image.</div>
           )}
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -10,7 +10,7 @@ export default function Banner() {
         <img
           src='/banner_img.png'
           alt='RUNNETH OVER banner'
-          style={{ height: '60vh' }}
+          // style={{ height: '60vh' }}
         />
       </div>
       {/* <div className="container-px py-20 grid lg:grid-cols-2 gap-10 items-center">
