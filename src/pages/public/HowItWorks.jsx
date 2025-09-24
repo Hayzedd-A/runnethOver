@@ -11,7 +11,7 @@ const steps = [
   {
     svg: <Search />,
     title: 'AI Search',
-    desc: 'We scan thousands of brands worldwide - from €10 gems to luxury icons. High street of high fashion? It\'s all here.',
+    desc: 'We scan thousands of brands worldwide - from $10 gems to luxury icons. High street of high fashion? It\'s all here.',
     img: '/how_2.png',
   },
   {
@@ -25,13 +25,13 @@ const steps = [
 export default function HowItWorks() {
   return (
     <div className='container-px py-2'>
-      <h1 className='container-px lg:text-6xl md:text-4xl text-3xl  pb-8 font-Playfair'>
+      <h1 className='container-px lg:text-8xl md:text-6xl text-4xl pb-8 font-Playfair'>
         How Runneth <br /> Over works
       </h1>
       {/* <div className="flex items-center justify-between">
         </div> */}
 
-      <div className='container-px mt-8 place-content-center grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-1 gap-6'>
+      <div className='container-px my-8 place-content-center grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-1 gap-6'>
         {steps.map((s) => (
           <div className='justify-center grid place-content-center'>
             <div className='flex justify-center'>

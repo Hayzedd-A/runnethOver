@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function OurStory() {
   return (
     <div className='container-px py-2 text-center max-w-[75em]'>
-      <h1 className='container-px lg:text-6xl md:text-4xl text-3xl  pb-8 font-Playfair'>
+      <h1 className='container-px lg:text-8xl md:text-6xl text-4xl  pb-8 font-Playfair'>
         Our story
       </h1>
 

@@ -18,7 +18,7 @@ export default function Nav() {
           <img
             src='/logo_name.png'
             alt='RUNNETH OVER'
-            className='h-8 sm:h-10 lg:h-12'
+            className='h-10 lg:h-12'
           />
         </Link>
 

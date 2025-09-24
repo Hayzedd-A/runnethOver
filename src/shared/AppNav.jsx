@@ -25,8 +25,8 @@ export default function AppNav() {
   };
 
   return (
-    <div className='sticky top-0 z-20 bg-white '>
-      <div className='container-px h-14 flex items-center justify-between'>
+    <div className='sticky top-0 z-10 bg-white '>
+      <div className='md:pl-[20em] container-px h-14 flex items-center justify-between'>
         <form onSubmit={onSubmit} className='flex-1 max-w-xl'>
           <label htmlFor='app-search' className='sr-only'>
             Search

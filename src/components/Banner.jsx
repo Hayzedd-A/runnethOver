@@ -15,7 +15,7 @@ export default function Banner() {
 
   return (
     <>
-      <div className='font-Playfair lg:text-6xl md:text-4xl text-3xl text-center leading-tight'>
+      <div className='font-Playfair lg:text-6xl md:text-4xl text-5xl text-center leading-tight'>
         The Global Fashion Search Engine
       </div>
       <div className='rounded-lg grid place-items-center text-gray-400'>
@@ -23,7 +23,7 @@ export default function Banner() {
           src='/banner_img.png'
           alt='RUNNETH OVER banner'
           style={{ maxHeight: '35em' }}
-          className={`transition-all duration-1000 ease-out transform ${
+          className={`transition-all duration-1000 ease-out transform scale-[1.3] md:scale-[1.5] relative top-[6em] ${
             isLoaded 
               ? 'opacity-100 translate-y-0 scale-100' 
               : 'opacity-0 translate-y-8 scale-95'

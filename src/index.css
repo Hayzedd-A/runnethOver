@@ -133,10 +133,10 @@ body {
   @apply btn bg-primary-600 text-white hover:bg-primary-700;
 }
 @utility auth-btn {
-  @apply w-full mt-2 rounded-md hover:bg-accent-800 bg-accent-500 text-white py-2 disabled:opacity-50;
+  @apply w-full mt-4 rounded-md hover:bg-accent-800 bg-accent-500 text-white py-4 disabled:opacity-50;
 }
 @utility btn-join {
-  @apply py-4 px-16 bg-accent-500 text-white hover:bg-accent-800 border-4 border-[#1355FF];
+  @apply py-4 px-16 bg-accent-500 text-white hover:bg-accent-800;
 }
 @utility btn-secondary {
   @apply btn bg-secondary-600 text-white hover:bg-secondary-700;

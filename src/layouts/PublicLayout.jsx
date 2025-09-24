@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
   export default function PublicLayout() {
     return (
-      <div className="main-container min-h-screen text-[#2C1810] flex justify-between flex-col">
+      <div className="overflow-hidden main-container min-h-screen text-[#2C1810] flex justify-between flex-col">
         <Nav />
         <main className="grid place-content-center">
           <Outlet />

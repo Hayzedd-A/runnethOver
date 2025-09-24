@@ -4,20 +4,44 @@ import SearchBar from '../../components/SearchBar.jsx';
 
 const FAQS = [
   {
-    q: 'What is Runneth Over?',
-    a: 'Runneth Over is a global fashion discovery platform that helps you find, track, and shop the styles you love. Using AI-powered visual search and real-time price tracking, we connect you to thousands of brands worldwide—from everyday essentials to luxury finds.',
+    q: 'How does Runneth Over work?',
+    a: 'Runneth Over helps you discover fashion pieces with ease. Simply upload an image or screenshot of the item you\'re interested in, and our AI will find the exact piece—or the closest styles—across global retailers.',
+  },
+  {
+    q: 'Do I need an account to use Runneth Over?',
+    a: "Yes, you'll need a free account to use Runneth Over. This gives you access to visual search, price comparisons, and saved favorites, while syncing your experience across devices.",
+  },
+  {
+    q: 'How do I visually search an item?',
+    a: 'Just upload a photo or screenshot of the piece you\'re looking for. If the image has multiple items, you can highlight the one you want us to find, and we\'ll bring you the best matches.',
   },
   {
     q: 'Can I compare prices across different stores?',
-    a: 'Yes, searching is free during the waitlist period.',
+    a: 'Yes! Runneth Over lets you instantly compare prices for the same or similar items across thousands of global retailers so you always get the best deal.',
   },
   {
-    q: 'How does the visual search work?',
-    a: 'Use the heart or + button on any product card.',
+    q: 'Which retailers and brands are included?',
+    a: 'We connect you to a wide range of retailers worldwide, from budget-friendly shops and high street brands to premium designers and luxury fashion houses all in one place.',
   },
   {
-    q: 'Can I create an account?',
-    a: 'Yes, sign up on the waitlist. You can log in to access saved items.',
+    q: 'How accurate are the matches?',
+    a: 'Our AI is trained to recognize patterns, styles, and colors. While it may not be perfect every time, you\'ll always see the most relevant matches. And if the exact item isn\'t available, we\'ll suggest the closest alternatives so you can still shop the look.',
+  },
+  {
+    q: 'Is Runneth Over free to use?',
+    a: 'Yes! Runneth Over is completely free. You can search, compare, and discover items without paying a penny.',
+  },
+  {
+    q: 'Will my photos be stored safely?',
+    a: 'Absolutely. Any images you upload are securely stored and never shared with third parties without your consent. Protecting your privacy is a top priority.',
+  },
+  {
+    q: 'Does Runneth Over sell products directly?',
+    a: 'No, Runneth Over doesn\'t sell products directly. We\'re a discovery and tracking platform. Once you find something you love, we\'ll redirect you to the retailer\'s site to complete your purchase.',
+  },
+  {
+    q: 'Can I share feedback or request features?',
+    a: 'Yes! We love hearing from our users. You can email us anytime at feedback@runnethover.io to share ideas, request features, or suggest improvements.',
   },
 ];
 
@@ -115,7 +139,7 @@ export default function Faqs() {
 
   return (
     <div className='container-px py-2'>
-      <h1 className='container-px lg:text-6xl md:text-4xl text-3xl  pb-8 font-Playfair'>
+      <h1 className='container-px lg:text-8xl md:text-6xl text-4xl  pb-8 font-Playfair'>
         Frequently Asked Questions
       </h1>
       <p>Have questions? We're here to help</p>

@@ -278,7 +278,7 @@ export default function Login() {
         <div className='flex gap-2 items-center text-gray-300'>
           <hr className='flex-1 border-1 border-gray-300' />
           <span>
-            Don't have an account? <Link to='/signup'>Register Now</Link>
+            Don't have an account? <Link className='hover:underline text-accent-50' to='/signup'>Register Now</Link>
           </span>
           <hr className='flex-1 border-1 border-gray-300' />
         </div>

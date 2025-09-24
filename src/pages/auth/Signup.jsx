@@ -244,6 +244,10 @@ export default function Signup() {
             <div className='text-xs text-red-600 mt-1'>{errors.password}</div>
           )}
         </div>
+        <div className="termsPolicy">
+        <input type="checkbox" className='mr-4' name="terms" id="terms" />
+          I agree to the <Link to="/terms" className='text-accent-50 hover:underline'>Terms</Link> and <Link to="/privacy" className='text-accent-50 hover:underline'>Policy</Link>
+        </div>
 
         <button type='submit' disabled={submitting} className='auth-btn'>
           {submitting ? 'Signing up...' : 'Signup'}
@@ -294,7 +298,7 @@ export default function Signup() {
             <hr className='flex-1 border-1 border-gray-300' />
             <span>
               Already have an account?{' '}
-              <Link to='/login' className='hover:underline'>
+              <Link to='/login' className='hover:underline text-accent-50'>
                 Log in
               </Link>
             </span>

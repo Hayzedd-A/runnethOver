@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const links = [
   { to: '/app/search', label: 'Search',  },
@@ -32,14 +32,14 @@ export default function Sidebar({ variant = 'side' }) {
   }
 
   return (
-    <aside className='w-64 bg-white hidden md:flex md:flex-col fixed h-full'>
-      <div className='h-16 flex items-center px-4 gap-2'>
+    <aside className='z-20 w-64 bg-white hidden md:flex md:flex-col fixed h-full'>
+      <Link to="/" className='h-16 flex items-center px-4 gap-2'>
         <img
           src='/logo_name.png'
           alt='RUNNETH OVER'
           className='h-8 sm:h-10 lg:h-12'
         />
-      </div>
+      </Link>
       <nav className='p-4 grid gap-4 '>
         {links.map((l) => (
           <NavLink

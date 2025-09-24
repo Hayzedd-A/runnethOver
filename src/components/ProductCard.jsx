@@ -5,14 +5,14 @@ export default function ProductCard({ product }) {
   const saved = isSaved(product.id);
 
   return (
-    <div className='border rounded-lg overflow-hidden bg-white hover:shadow-sm transition-shadow'>
+    <div className='p-4 overflow-hidden bg-white hover:shadow-sm transition-shadow'>
       <div className='aspect-square bg-gray-100'>
         {/* In real app, use product.image url */}
         {product.thumbnail ? (
           <img
             src={product.thumbnail + product.name.replace(' ', '')}
             alt={product.name}
-            className='w-full h-full object-cover'
+            className='rounded-lg w-full h-full object-cover'
           />
         ) : (
           <div className='w-full h-full grid place-items-center text-gray-400'>
@@ -51,7 +51,7 @@ export default function ProductCard({ product }) {
                 width='20'
                 height='17'
                 viewBox='0 0 20 17'
-                fill='none'
+                fill='rgb(249, 60, 101)'
                 xmlns='http://www.w3.org/2000/svg'
               >
                 <path
@@ -85,13 +85,13 @@ export default function ProductCard({ product }) {
               </svg>
             )}
           </button>
-          <button
+          {/* <button
             className='w-12 h-12 text-3xl rounded-full bg-accent-500 text-white hover:bg-accent-800'
             onClick={() => toggleSaved(product)}
             title='Add'
           >
             + 
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
