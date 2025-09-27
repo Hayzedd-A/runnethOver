@@ -1,19 +1,19 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Links } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar.jsx';
 
 const FAQS = [
   {
     q: 'How does Runneth Over work?',
-    a: 'Runneth Over helps you discover fashion pieces with ease. Simply upload an image or screenshot of the item you\'re interested in, and our AI will find the exact piece—or the closest styles—across global retailers.',
+    a: "Runneth Over helps you discover fashion pieces with ease. Simply upload an image or screenshot of the item you're interested in, and our AI will find the exact piece—or the closest styles—across global retailers.",
   },
   {
     q: 'Do I need an account to use Runneth Over?',
-    a: "Yes, you'll need a free account to use Runneth Over. This gives you access to visual search, price comparisons, and saved favorites, while syncing your experience across devices.",
+    a: "Yes, you'll need a account to use Runneth Over. This gives you access to visual search, price comparisons, and saved favorites, while syncing your experience across devices.",
   },
   {
     q: 'How do I visually search an item?',
-    a: 'Just upload a photo or screenshot of the piece you\'re looking for. If the image has multiple items, you can highlight the one you want us to find, and we\'ll bring you the best matches.',
+    a: "Just upload a photo or screenshot of the piece you're looking for. If the image has multiple items, you can highlight the one you want us to find, and we'll bring you the best matches.",
   },
   {
     q: 'Can I compare prices across different stores?',
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: 'How accurate are the matches?',
-    a: 'Our AI is trained to recognize patterns, styles, and colors. While it may not be perfect every time, you\'ll always see the most relevant matches. And if the exact item isn\'t available, we\'ll suggest the closest alternatives so you can still shop the look.',
+    a: "Our AI is trained to recognize patterns, styles, and colors. While it may not be perfect every time, you'll always see the most relevant matches. And if the exact item isn't available, we'll suggest the closest alternatives so you can still shop the look.",
   },
   {
     q: 'Is Runneth Over free to use?',
@@ -37,7 +37,7 @@ const FAQS = [
   },
   {
     q: 'Does Runneth Over sell products directly?',
-    a: 'No, Runneth Over doesn\'t sell products directly. We\'re a discovery and tracking platform. Once you find something you love, we\'ll redirect you to the retailer\'s site to complete your purchase.',
+    a: "No, Runneth Over doesn't sell products directly. We're a discovery and tracking platform. Once you find something you love, we'll redirect you to the retailer's site to complete your purchase.",
   },
   {
     q: 'Can I share feedback or request features?',
@@ -65,7 +65,7 @@ const SOCIALS = [
     ),
 
     title: 'Tiktok',
-    link: 'https://tiktok.com/runeth_over',
+    link: 'https://www.tiktok.com/@runnethover.io',
   },
   {
     icon: () => (
@@ -83,7 +83,7 @@ const SOCIALS = [
       </svg>
     ),
     title: 'LinkedIn',
-    link: 'https://linkedIn.com/runneth_over',
+    link: 'https://www.linkedin.com/company/runnethover/',
   },
   {
     icon: () => (
@@ -101,7 +101,7 @@ const SOCIALS = [
       </svg>
     ),
     title: 'Instagram',
-    link: 'https://instagram.com/runneth_over',
+    link: 'https://www.instagram.com/runnethover.io/',
   },
   {
     icon: () => (
@@ -119,7 +119,7 @@ const SOCIALS = [
       </svg>
     ),
     title: 'Mail',
-    link: 'tel:https://support@runnethover.com',
+    link: 'tel:feedback@runnethover.io',
   },
 ];
 
@@ -152,10 +152,10 @@ export default function Faqs() {
         />
       </div>
 
-      <div className="flex gap-2 align-middle my-4">
-        {SOCIALS.map(social => social.icon()
-
-        )}
+      <div className='flex gap-2 align-middle my-4'>
+        {SOCIALS.map((social) => (
+          <Link target='_blank' to={social.link}>{social.icon()}</Link>
+        ))}
       </div>
       <ul className='space-y-0'>
         {results.map((f, idx) => {

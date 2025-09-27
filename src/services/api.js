@@ -41,9 +41,9 @@ export async function login(email, password) {
   return {
     id: 'u_1',
     email,
-    firstName: 'Alex',
-    lastName: 'Doe',
-    gender: 'unspecified',
+    firstName: 'Adebayo',
+    lastName: 'Azeez',
+    gender: 'male',
     avatarUrl: '',
   };
 }
@@ -56,7 +56,7 @@ export async function signup({ firstName, lastName, email, password }) {
     email,
     firstName,
     lastName,
-    gender: 'unspecified',
+    gender: 'male',
     avatarUrl: '',
   };
 }

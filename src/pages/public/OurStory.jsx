@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 export default function OurStory() {
   return (
     <div className='container-px py-2 text-center max-w-[75em]'>
-      <h1 className='container-px lg:text-8xl md:text-6xl text-4xl  pb-8 font-Playfair'>
+      <h1 className='container-px lg:text-8xl md:text-6xl text-4xl text-[#F08E80] pb-8 font-Playfair'>
         Our story
       </h1>
 
-      <article className='max-w-[65em] mt-6 leading-[2em] text-2xl'>
+      <article style={{fontWeight: "300"}} className='font-sans max-w-[65em] mt-6 leading-[2.2em] font-normal text-3xl'>
         <p>
           I saw the perfect pair of Balenciaga heels on Instagram and spent
           months trying to find them, reverse image searching, asking in
@@ -33,7 +33,7 @@ export default function OurStory() {
           searching.
         </p>
 
-        <h4 className='font-bold'>
+        <h4 className='font-bold text-[#F08E80]'>
           Welcome to Runneth Over, where your next favorite find is just a click
           away.
         </h4>

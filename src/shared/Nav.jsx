@@ -4,7 +4,7 @@ import { useState } from 'react';
 export default function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const linkCls = ({ isActive }) =>
-    `px-3 py-2 rounded-md font-medium ${
+    `px-3 py-2 font-medium hover:border-2-accent-50 ${
       isActive
         ? 'border-bottom-4 border-accent-500'
         : 'text-gray-700 hover:text-gray-900'
