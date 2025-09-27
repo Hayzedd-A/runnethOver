@@ -21,7 +21,7 @@ export default function Sidebar({ variant = 'side' }) {
   if (variant === 'bottom') {
     return (
       <nav className='fixed bottom-0 inset-x-0 bg-white h-14'>
-        <ul className='h-full grid grid-cols-3'>
+        <ul className='h-full grid grid-cols-3 z-15'>
           {links.map((l) => (
             <li key={l.to} className='h-full relative'>
               {l.children ? (
@@ -81,12 +81,12 @@ export default function Sidebar({ variant = 'side' }) {
         </ul>
         
         {/* Overlay to close dropdown when clicking outside */}
-        {openDropdown && (
+        {/* {openDropdown && (
           <div 
             className="fixed inset-0 z-10" 
             onClick={() => setOpenDropdown(null)}
           />
-        )}
+        )} */}
       </nav>
     );
   }

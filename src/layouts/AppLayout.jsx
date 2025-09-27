@@ -19,7 +19,7 @@ import { Outlet } from "react-router-dom";
         {/* Mobile layout */}
         <div className="md:hidden flex flex-col min-h-screen">
           <AppNav />
-          <main className="flex-1 container-px py-4">
+          <main className="mb-14 flex-1 container-px py-4">
             <Outlet />
           </main>
           <Sidebar variant="bottom" />
