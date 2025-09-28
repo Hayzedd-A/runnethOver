@@ -119,7 +119,7 @@ const SOCIALS = [
       </svg>
     ),
     title: 'Mail',
-    link: 'tel:feedback@runnethover.io',
+    link: 'mailto:feedback@runnethover.io',
   },
 ];
 
