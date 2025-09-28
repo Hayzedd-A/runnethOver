@@ -4,7 +4,7 @@ export default function OurStory() {
   return (
     <div className='container-px py-2 text-center max-w-[75em]'>
       <h1 className='container-px lg:text-8xl md:text-6xl text-4xl pb-8 font-Playfair'>
-        Our story
+        Our Story
       </h1>
 
       <article style={{fontWeight: "300"}} className='max-w-[65em] mt-6 leading-[2.2em] font-normal md:text-2xl lg:text-3xl'>
@@ -37,7 +37,7 @@ export default function OurStory() {
           Welcome to Runneth Over, where your next favorite find is just a click
           away.
         </h4>
-        <p className='lg:text-4xl md:text-3xl text-3xl  font-Playfair m-0'>
+        <p className='lg:text-4xl pt-4 md:text-3xl text-3xl  font-Playfair m-0'>
           Offie Udo-Umoh
         </p>
         <p className='font-Playfair m-0'>Founder</p>
