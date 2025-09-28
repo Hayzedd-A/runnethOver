@@ -11,7 +11,7 @@
     const displayInitials = initials ? initials.toUpperCase() : "U";
 
     return (
-      <div className="h-full grid rounded-xl p-8 lg:text-2xl bg-white lg:flex">
+      <div className="h-full grid rounded-xl p-4 md:p-8 lg:text-2xl bg-white lg:flex">
         {/* Left: centered avatar + name */}
         <section className="flex-1">
           <div className="h-full p-8 flex flex-col items-center justify-center text-center">
@@ -50,7 +50,7 @@
         <section className="h-full flex-1">
           <div className="h-full lg:p-8 lg:rounded-bl-2xl rounded-t-2xl lg:rounded-tr-none bg-gradient-to-b from-accent-50 to-[rgb(253,162,113)] text-white">
             <div className=" px-6 py-4 font-semibold">Profile information</div>
-            <div className="p-6">
+            <div className="lg:p-6 p-2">
               <dl className="grid  gap-6">
                 <div className="flex gap-4 items-center">
                   <dt className="font-medium ">First name:</dt>

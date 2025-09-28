@@ -35,10 +35,10 @@ export default function HowItWorks() {
         {steps.map((s) => (
           <div className='justify-center grid place-content-center'>
             <div className='flex justify-center'>
-              <div key={s.title} className=' bg-white w-[20em] h-[15em] p-8'>
-                <div className='text-3xl'>{s.svg}</div>
+              <div key={s.title} className='text-center  bg-white w-[20em] h-[15em] p-8'>
+                <div className='flex justify-center text-3xl'>{s.svg}</div>
                 <div className='mt-3 font-semibold'>{s.title}</div>
-                <div className='text-sm text-gray-600 text-center mt-1'>{s.desc}</div>
+                <div className='text-sm text-gray-600 mt-1'>{s.desc}</div>
               </div>
             </div>
             <div className='flex justify-center'>
