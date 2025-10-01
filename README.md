@@ -82,3 +82,20 @@ components: {
     }   
 }
 note: the appNav in the app is different from the nav in the public pages
+
+
+study this whole project, the backend is ready.
+modify this to work with the backend running on `localhost:5000`
+
+API Endpoints
+POST /api/auth/signup - User registration
+POST /api/auth/login - User login
+GET /api/auth/google - Google OAuth
+POST /api/products/upload-image - Upload image for search
+GET /api/products?query= - Manual product search
+POST /api/favorites - Add to favorites
+GET /api/favorites - Get favorites
+DELETE /api/favorites/:id - Remove favorite
+PUT /api/profile - Update user profile
+POST /api/profile/image - Upload profile image (multipart/form-data)
+GET /uploads/profiles/:filename
