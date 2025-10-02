@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { required, validate } from '../../utils/validators.js';
+import * as api from '../../services/api.js';
 
 export default function Account() {
-  const { user, updateAccount } = useAuth();
+  const { user, updateAccount, uploadProfileImage } = useAuth();
   const [fields, setFields] = useState({
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
@@ -14,11 +15,22 @@ export default function Account() {
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState('');
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const rules = {
     firstName: [required],
     lastName: [required],
     gender: [required],
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFields({ ...fields, avatarFile: file });
+      // Create preview URL
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    }
   };
 
   const onSubmit = async (e) => {
@@ -29,48 +41,66 @@ export default function Account() {
     if (Object.keys(errs).length) return;
     try {
       setSaving(true);
-      const avatarUrl = fields.avatarFile
-        ? URL.createObjectURL(fields.avatarFile)
-        : user.avatarUrl;
+      
+      // Upload profile image first if there's a new one
+      if (fields.avatarFile) {
+        await uploadProfileImage(fields.avatarFile);
+      }
+      
+      // Update other profile fields
       await updateAccount({
         firstName: fields.firstName,
         lastName: fields.lastName,
         gender: fields.gender,
-        avatarUrl,
       });
-      setMsg('Profile updated');
+      
+      setMsg('Profile updated successfully');
+      setFields({ ...fields, avatarFile: null });
+      setPreviewUrl(null);
+    } catch (error) {
+      setErrors({ form: error.message || 'Failed to update profile' });
     } finally {
       setSaving(false);
     }
   };
 
+  const currentAvatarUrl = previewUrl || (user?.avatarUrl ? api.getProfileImageUrl(user.avatarUrl) : null);
+
   return (
       <div className='bg-white flex flex-col gap-16 rounded-2xl shadow-sm p-8 h-full '>
         {/* Profile Image Upload */}
         <div className='flex flex-col items-center mb-8'>
-          <div className='h-20 w-20 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200'>
+          <div className='relative h-20 w-20 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200 overflow-hidden'>
+            {currentAvatarUrl ? (
+              <img 
+                src={currentAvatarUrl} 
+                alt="Profile preview" 
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-8 w-8 text-gray-400'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={1.5}
+                  d='M12 4.5v15m7.5-7.5h-15'
+                />
+              </svg>
+            )}
             <input
               id="avatar"
               type="file"
               accept="image/*"
               className="mt-1"
               style={{ position: 'absolute', opacity: 0, width: '80px', height: '80px', cursor: 'pointer' }}
-              onChange={(e) => setFields({ ...fields, avatarFile: e.target.files?.[0] || null })}
+              onChange={handleFileChange}
             />
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-8 w-8 text-gray-400'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={1.5}
-                d='M12 4.5v15m7.5-7.5h-15'
-              />
-            </svg>
           </div>
           <span className='mt-2 text-sm text-brand-600 '>
             Upload Photo
@@ -79,6 +109,8 @@ export default function Account() {
 
         {/* Form */}
         <form className='space-y-6 grid gap-4' onSubmit={onSubmit}>
+          {msg && <div className="text-sm text-green-600 text-center">{msg}</div>}
+          {errors.form && <div className="text-sm text-red-600 text-center">{errors.form}</div>}
           {/* Name Fields */}
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
             <div>

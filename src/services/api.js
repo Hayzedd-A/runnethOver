@@ -1,6 +1,54 @@
+const API_BASE_URL = 'http://localhost:5000/api';
+
 const LS_USER = 'affilia_user';
+const LS_TOKEN = 'affilia_token';
 const LS_SAVED = 'affilia_saved';
 
+// Helper to get auth token
+function getToken() {
+  return localStorage.getItem(LS_TOKEN);
+}
+
+// Helper to set auth token
+function setToken(token) {
+  if (token) {
+    localStorage.setItem(LS_TOKEN, token);
+  } else {
+    localStorage.removeItem(LS_TOKEN);
+  }
+}
+
+// Helper for API requests
+async function apiRequest(endpoint, options = {}) {
+  const token = getToken();
+  const headers = {
+    ...options.headers,
+  };
+
+  // Add auth token if available
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  // Add Content-Type for JSON requests (unless it's FormData)
+  if (options.body && !(options.body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+  }
+
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    ...options,
+    headers,
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ message: 'Request failed' }));
+    throw new Error(error.message || `HTTP ${response.status}`);
+  }
+
+  return response.json();
+}
+
+// Local storage helpers
 export function getStoredUser() {
   try {
     const raw = localStorage.getItem(LS_USER);
@@ -12,8 +60,12 @@ export function getStoredUser() {
 
 export function setStoredUser(u) {
   try {
-    if (!u) localStorage.removeItem(LS_USER);
-    else localStorage.setItem(LS_USER, JSON.stringify(u));
+    if (!u) {
+      localStorage.removeItem(LS_USER);
+      setToken(null);
+    } else {
+      localStorage.setItem(LS_USER, JSON.stringify(u));
+    }
   } catch {}
 }
 
@@ -32,50 +84,104 @@ export function setStoredSaved(items) {
   } catch {}
 }
 
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-
+// Auth APIs
 export async function login(email, password) {
-  await delay(500);
-  if (!email || !password) throw new Error('Invalid credentials');
-  // Not secure—mock only.
-  return {
-    id: 'u_1',
-    email,
-    firstName: 'Adebayo',
-    lastName: 'Azeez',
-    gender: 'male',
-    avatarUrl: '',
-  };
+  const data = await apiRequest('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+
+  // Store token
+  if (data.token) {
+    setToken(data.token);
+  }
+
+  // Return user data
+  return data.user;
 }
 
 export async function signup({ firstName, lastName, email, password }) {
-  await delay(600);
-  if (!email) throw new Error('Email required');
-  return {
-    id: 'u_' + Date.now(),
-    email,
-    firstName,
-    lastName,
-    gender: 'male',
-    avatarUrl: '',
-  };
+  const data = await apiRequest('/auth/signup', {
+    method: 'POST',
+    body: JSON.stringify({ firstName, lastName, email, password }),
+  });
+
+  // Store token
+  if (data.token) {
+    setToken(data.token);
+  }
+
+  // Return user data
+  return data.user;
 }
 
+export async function googleAuth() {
+  // Redirect to Google OAuth endpoint
+  window.location.href = `${API_BASE_URL}/auth/google`;
+}
+
+// Product APIs
 export async function uploadImageAndGetProducts(file) {
-  await delay(900);
-  // Return mock products
-  const base = [
-    { id: 'p1', name: 'Classic Sneakers', brand: 'SneakCo', price: 69.99, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
-    { id: 'p2', name: 'Canvas Tote Bag', brand: 'CarryAll', price: 24.5, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
-    { id: 'p3', name: 'Denim Jacket', brand: 'BlueWear', price: 89.0, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
-    { id: 'p4', name: 'Analog Watch', brand: 'Timely', price: 129.99, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
-    { id: 'p5', name: 'Wireless Earbuds', brand: 'Soundly', price: 59.0, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
-    { id: 'p6', name: 'Baseball Cap', brand: 'Capster', price: 19.99, year: 2024, thumbnail: 'https://picsum.photos/200/300?' },
-  ];
-  return base.map((p) => ({ ...p, image: '', matched: Math.random() > 0.5 }));
+  const formData = new FormData();
+  formData.append('image', file);
+
+  const data = await apiRequest('/products/upload-image', {
+    method: 'POST',
+    body: formData,
+  });
+
+  return data.products || [];
 }
 
+export async function searchProducts(query) {
+  const data = await apiRequest(`/products?query=${encodeURIComponent(query)}`);
+  return data.products || [];
+}
+
+// Favorites APIs
+export async function addToFavorites(productId) {
+  const data = await apiRequest('/favorites', {
+    method: 'POST',
+    body: JSON.stringify({ productId }),
+  });
+  return data.favorite;
+}
+
+export async function getFavorites() {
+  const data = await apiRequest('/favorites');
+  return data.favorites || [];
+}
+
+export async function removeFavorite(id) {
+  await apiRequest(`/favorites/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+// Profile APIs
 export async function updateAccount(user, updates) {
-  await delay(400);
-  return { ...user, ...updates };
+  const data = await apiRequest('/profile', {
+    method: 'PUT',
+    body: JSON.stringify(updates),
+  });
+  return data.user;
+}
+
+export async function uploadProfileImage(file) {
+  const formData = new FormData();
+  formData.append('image', file);
+
+  const data = await apiRequest('/profile/image', {
+    method: 'POST',
+    body: formData,
+  });
+
+  return data.user;
+}
+
+// Helper to get profile image URL
+export function getProfileImageUrl(filename) {
+  if (!filename) return '';
+  if (filename.startsWith('http')) return filename;
+  return `http://localhost:5000/uploads/profiles/${filename}`;
 }

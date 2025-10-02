@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
+import * as api from '../../services/api.js';
 import {
   required,
   minLength,
@@ -259,7 +260,11 @@ export default function Signup() {
             <span>Or continue with</span>
             <hr className='flex-1 border-1 border-gray-300' />
           </div>
-          <button className='flex justify-center'>
+          <button 
+            type='button'
+            onClick={() => api.googleAuth()}
+            className='flex justify-center'
+          >
             <svg
               width='117'
               height='60'

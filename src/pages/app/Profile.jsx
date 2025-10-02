@@ -2,6 +2,7 @@
   // Assumes it's rendered inside AppLayout (which provides Sidebar and AppNav).
   import { Link } from "react-router-dom";
   import { useAuth } from "../../context/AuthContext.jsx";
+  import * as api from "../../services/api.js";
 
   export default function Profile() {
     const { user } = useAuth();
@@ -10,15 +11,18 @@
       (user?.firstName?.[0] || "") + (user?.lastName?.[0] || "");
     const displayInitials = initials ? initials.toUpperCase() : "U";
 
+    // Get the full avatar URL
+    const avatarUrl = user?.avatarUrl ? api.getProfileImageUrl(user.avatarUrl) : null;
+
     return (
       <div className="h-full grid rounded-xl p-4 md:p-8 lg:text-2xl bg-white lg:flex">
         {/* Left: centered avatar + name */}
         <section className="flex-1">
           <div className="h-full p-8 flex flex-col items-center justify-center text-center">
             <div className="relative">
-              {user?.avatarUrl ? (
+              {avatarUrl ? (
                 <img
-                  src={user.avatarUrl}
+                  src={avatarUrl}
                   alt={`${user?.firstName || "User"} avatar`}
                   className="w-48 h-48 rounded-full object-cover ring-4 ring-brand-50"
                 />
