@@ -17,19 +17,18 @@ import AuthContainer from "./pages/auth/AuthContainer.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public pages - NO AuthContext */}
-        <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/faqs" element={<Faqs />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/our-story" element={<OurStory />} />
-        </Route>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public pages */}
+          <Route element={<PublicLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/faqs" element={<Faqs />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/our-story" element={<OurStory />} />
+          </Route>
 
-        {/* Auth and Protected routes - WITH AuthContext */}
-        <Route element={<AuthProvider />}>
-          {/* Auth pages */}
+          {/* Auth */}
           <Route element={<AuthContainer />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
@@ -45,12 +44,12 @@ function App() {
               <Route path="profile" element={<Profile />} />
             </Route>
           </Route>
-        </Route>
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </BrowserRouter>
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
