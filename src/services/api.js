@@ -1,8 +1,7 @@
-const API_BASE_URL = 'http://localhost:5000/api';
-
-const LS_USER = 'affilia_user';
-const LS_TOKEN = 'affilia_token';
-const LS_SAVED = 'affilia_saved';
+const API_BASE_URL = import.meta.env.VITE_APP_BACKEND_URL;
+const LS_USER = import.meta.env.VITE_APP_LS_USER;
+const LS_TOKEN = import.meta.env.VITE_APP_LS_TOKEN;
+const LS_SAVED = import.meta.env.VITE_APP_LS_SAVED;
 
 // Helper to get auth token
 function getToken() {
@@ -66,7 +65,9 @@ export function setStoredUser(u) {
     } else {
       localStorage.setItem(LS_USER, JSON.stringify(u));
     }
-  } catch {}
+  } catch (err){
+    console.log(err)
+  }
 }
 
 export function getStoredSaved() {
@@ -81,7 +82,9 @@ export function getStoredSaved() {
 export function setStoredSaved(items) {
   try {
     localStorage.setItem(LS_SAVED, JSON.stringify(items || []));
-  } catch {}
+  }  catch (err){
+    console.log(err)
+  }
 }
 
 // Auth APIs
